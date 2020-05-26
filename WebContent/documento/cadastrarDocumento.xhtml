@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/backoffice/templateBackoffice/template.xhtml">
+
+    <ui:define name="title">Cadastrar Documento</ui:define>
+
+    <ui:define name="head"></ui:define>
+    <ui:define name="viewname">
+        <li><p:link outcome="/backoffice/dashboard">Cadastrar Documento</p:link></li>
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="layout-dashboard">
+            <div class="ui-g">
+                <div class="ui-g-12">
+	                <div class="card card-w-title">
+	                    <h1>Cadastro de Documentos</h1>
+	                    
+	                    <h:form id="form">
+		                    <p:panelGrid columns="4" layout="grid" styleClass="ui-panelgrid-blank form-group">
+			                    <p:selectOneMenu id="tipoDocumento" value="#{documentos.documento.tipoDocumento}" style="margin-bottom:10px;">
+			                        <f:selectItem itemLabel="Tipo do Documento" itemValue=""/>
+			                        <f:selectItems value="#{documentos.listTipoSituacao}" var="documento" itemLabel="#{documento}" itemValue="#{documento}"/>
+		                        </p:selectOneMenu>
+	                        
+		                       	<p:inputText  placeholder="Descrição" id="descricao" value="#{documentos.documento.descricao}"/>
+		                       	
+		                       	<p:inputText placeholder="número" id="numero" value="#{documentos.documento.numero}"/>
+		                        
+								<p:calendar placeholder="Data de Emissão" id="button" showOn="button" />
+								
+								 <p:inputText placeholder="Orgão Emissor" id="orgaoEmissor" value="#{documentos.documento.orgaoEmissor}" />
+		                    </p:panelGrid>	
+		                </h:form>                    
+		                   
+	                    <p:panelGrid columns="1" layout="grid">
+	                    	<p:commandButton action="#{documentos.salvar}" process="@form" update="@all" ajax="true" id="spbtn" value="Salvar" type="button" icon="fa fa-check"/>
+	                    </p:panelGrid>
+	                </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

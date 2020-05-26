@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/backoffice/templateBackoffice/template.xhtml">
+
+    <ui:define name="title">Cadastrar Documento</ui:define>
+
+    <ui:define name="head"></ui:define>
+    <ui:define name="viewname">
+        <li><p:link outcome="/backoffice/dashboard">Documentos Cadastrados</p:link></li>
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="layout-dashboard">
+            <div class="ui-g">
+                <div class="ui-g-12">
+	                <div class="card card-w-title">
+	                    <h1>Documentos Cadastrados</h1>
+	                    
+	                    <p:dataTable id="tblDocumentos" var="documento" value="#{listarDocumentos.listDocumento}">
+							<p:column headerText="Código">
+								<h:outputText value="#{documento.id}" />
+							</p:column>
+							
+							<p:column headerText="Tipo">
+								<h:outputText value="#{documento.tipoDocumento}" />
+							</p:column>
+							
+							<p:column headerText="Descrição">
+								<h:outputText value="#{documento.descricao}" />
+							</p:column>
+							
+							<p:column headerText="Número">
+								<h:outputText value="#{documento.numero}" />
+							</p:column>
+							
+							<p:column headerText="Data de Emissão">
+								<h:outputText value="#{documento.dataDeEmissao}" />
+							</p:column>
+							
+							<p:column headerText="Orgão Emissor">
+								<h:outputText value="#{documento.orgaoEmissor}" />
+							</p:column>
+						</p:dataTable>
+	                </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
